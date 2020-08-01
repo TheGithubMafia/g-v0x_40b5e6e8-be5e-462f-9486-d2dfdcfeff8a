@@ -3,7 +3,7 @@
     "name": "Web Dictionary",
     "description": "Show definition of a when doubled clicked and selected hovered.",
     "version": "1.0",
-    "homepage_url": "https://jhamadhav.com/extension-web-dictionary",
+    "homepage_url": "https://github.com/jhamadhav/extension-web-dictionary",
     "icons": {
         "48": "icons/icon-48.svg"
     },
