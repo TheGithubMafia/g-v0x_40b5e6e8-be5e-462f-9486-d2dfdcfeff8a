@@ -1,0 +1,28 @@
+{
+    "manifest_version": 2,
+    "name": "Web Dictionary",
+    "description": "Show definition of a when doubled clicked and selected hovered.",
+    "version": "1.0",
+    "homepage_url": "https://jhamadhav.com/extension-web-dictionary",
+    "icons": {
+        "48": "icons/icon-48.svg"
+    },
+    "permissions": [
+        "activeTab",
+        "<all_urls>",
+        "webRequest"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "css": [
+                "content-styles/main.min.css"
+            ],
+            "js": [
+                "content-scripts/content-script.js"
+            ]
+        }
+    ]
+}
