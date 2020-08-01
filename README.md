@@ -7,7 +7,7 @@ While surfing and browsing the web it's quite troublesome when you come across a
 # Demo
 
 **Image demo** : <br>
- ![demo](demo\demo.gif)
+ ![demo](https://raw.githubusercontent.com/jhamadhav/extension-web-dictionary/master/demo/demo.gif)
 
 **Extension** : [Download for Firefox](https://addons.mozilla.org/en-US/firefox/addon/web-dictionary/)
 
