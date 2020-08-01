@@ -2,7 +2,14 @@
 
 Shows definition of a word when doubled clicked on a word.
 
-While surfing and browsing the web it's quite troublesome when you come across a unknown word and the hassle to search for it in another tab breaks the flow and our attention. This extension allows user to doubleclick on the unknown word and a popup containing the meaning/definition of the said word will appear. Thus effectively solving the difficulty to search for it and break the reading flow. So now with this extension enjoy your online reads seamlessly !
+While surfing and browsing the web it's quite troublesome when you come across a unknown word and the hassle to search for it in another tab breaks the flow and our attention. This extension allows user to doubleclick on the unknown word and a popup containing the meaning/definition of the said word will appear. Thus effectively solving the difficulty to search for it and break the reading flow. So now with this extension enjoy your online reads seamlessly!
+
+# Demo
+
+**Image demo** : <br>
+ ![demo](demo\demo.gif)
+
+**Extension** : [Download for Firefox](https://addons.mozilla.org/en-US/firefox/addon/web-dictionary/)
 
 # Credits
 
