@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web dictionary</title>
 
-    <!-- style and script -->
+    <!-- style -->
     <link rel="stylesheet" href="./styles/main.min.css">
-    <script src="./scripts/main.js"></script>
+
 </head>
 
 <body>
@@ -19,7 +19,7 @@
                 <h3>Web Dictionary</h3>
             </div>
             <div class="check">
-                <input type="checkbox" checked />
+                <input name="is_allowed" id="cb" checked onclick="send_info()" type="checkbox" />
             </div>
         </header>
         <hr>
@@ -37,6 +37,8 @@
         </div>
 
     </div>
+    <!-- scripts -->
+    <script src="./scripts/main.js"></script>
 </body>
 
 </html>
