@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "Web Dictionary",
     "description": "Show definition of a when doubled clicked and selected hovered.",
-    "version": "1.0",
+    "version": "1.2",
     "homepage_url": "https://github.com/jhamadhav/extension-web-dictionary",
     "icons": {
         "48": "icons/icon-48.svg"
@@ -12,6 +12,11 @@
         "<all_urls>",
         "webRequest"
     ],
+    "browser_action": {
+        "default_icon": "icons/icon-48.svg",
+        "default_title": "Web Dictionary",
+        "default_popup": "popup/index.html"
+    },
     "content_scripts": [
         {
             "matches": [
@@ -24,5 +29,10 @@
                 "content-scripts/content-script.js"
             ]
         }
-    ]
+    ],
+    "icons": {
+        "32": "icons/icon-48.svg",
+        "48": "icons/icon-48.svg",
+        "96": "icons/icon-48.svg"
+    }
 }
