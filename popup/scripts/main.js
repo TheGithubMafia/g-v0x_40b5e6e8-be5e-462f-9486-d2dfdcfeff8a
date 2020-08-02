@@ -1,30 +1,6 @@
 let inp, submit;
 let word, title, desc, more;
 
-window.onload = () => {
-
-    // get dom
-    inp = document.getElementById("inp");
-    word = inp.value.trim();
-
-    // result
-    title = document.getElementsByClassName("res-title")[0];
-    desc = document.getElementsByClassName("res-desc")[0];
-    more = document.getElementsByClassName("res-more")[0];
-    submit = document.getElementById("submit");
-
-    // event listener
-    submit.onclick = () => { get_def() };
-    inp.addEventListener("keydown", (e) => {
-        let key = e.keyCode;
-
-        // if enter is pressed
-        if (key == 13) {
-            get_def();
-        }
-    });
-}
-
 // getting definition
 const get_def = async () => {
     // get dom
@@ -67,3 +43,52 @@ const get_def = async () => {
         };
     }
 }
+
+// it sends the checkbox data to the content script that is injected into tabs
+const send_info = (tabs) => {
+    // console.log(tabs[0]);
+    let cb = document.getElementById("cb");
+    browser.tabs.sendMessage(tabs[0].id, {
+        checkbox_value: cb.checked
+    });
+}
+
+// send error report to the content script
+const send_report = (err) => {
+
+    browser.tabs.sendMessage(tabs[0].id, {
+        ERROR: err
+    });
+}
+
+
+// get dom
+inp = document.getElementById("inp");
+word = inp.value.trim();
+
+// result
+title = document.getElementsByClassName("res-title")[0];
+desc = document.getElementsByClassName("res-desc")[0];
+more = document.getElementsByClassName("res-more")[0];
+submit = document.getElementById("submit");
+
+// event listener
+submit.onclick = () => { get_def() };
+inp.addEventListener("keydown", (e) => {
+    let key = e.keyCode;
+
+    // if enter is pressed
+    if (key == 13) {
+        get_def();
+    }
+});
+
+// send checkbox data
+document.addEventListener("click", (e) => {
+    // console.log(e.target.id);
+    if (e.target.id == "cb") {
+        browser.tabs.query({ active: true, currentWindow: true })
+            .then(send_info)
+            .catch(send_report);
+    }
+})

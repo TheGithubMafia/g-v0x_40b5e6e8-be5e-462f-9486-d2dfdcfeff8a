@@ -1,5 +1,5 @@
 // check if the extension works
-console.log("Link previewer successfully added!");
+console.log("Web dictionary successfully added!");
 
 // global variables
 let H = window.innerHeight;
@@ -10,6 +10,23 @@ window.onresize = () => {
     H = window.innerHeight;
     W = window.innerWidth;
 }
+
+// check if user has allowed the script to run
+let is_allowed = true;
+browser.runtime.onMessage.addListener((message) => {
+    // print that message
+    // console.log(message);
+
+    // this is data from the checkbox, it is checked at start so anchor tags get the event but if the box is unchecked, the event will be nullified
+    if (message.checkbox_value) {
+        // if true
+        is_allowed = true;
+    } else {
+        //if false
+        is_allowed = false;
+    }
+});
+
 
 // creation of the tool tip
 const create_tool = () => {
@@ -159,5 +176,9 @@ const delete_dict = (e) => {
     }
 }
 // get document and add a event listener
-document.addEventListener("dblclick", show);
+document.addEventListener("dblclick", (e) => {
+    if (is_allowed) {
+        show(e);
+    }
+});
 document.addEventListener("click", delete_dict);
