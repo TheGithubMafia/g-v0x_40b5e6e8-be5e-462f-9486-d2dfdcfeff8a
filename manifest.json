@@ -10,7 +10,8 @@
     "permissions": [
         "activeTab",
         "<all_urls>",
-        "webRequest"
+        "webRequest",
+        "storage"
     ],
     "browser_action": {
         "default_icon": "icons/icon-48.svg",
@@ -26,6 +27,8 @@
                 "content-styles/main.min.css"
             ],
             "js": [
+                "popup/scripts/api_call.js",
+                "content-scripts/dictionary.js",
                 "content-scripts/content-script.js"
             ]
         }
