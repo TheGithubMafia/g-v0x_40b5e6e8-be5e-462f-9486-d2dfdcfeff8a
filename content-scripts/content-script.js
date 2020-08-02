@@ -104,27 +104,38 @@ const show = async (e) => {
 
     let word = window.getSelection().toString().trim();
     let lang = "en";
-    let def = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/${lang}/${word}`);
+    if (word.length > 0) {
+        let def = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/${lang}/${word}`);
 
-    if (def.ok) {
-        let data = await def.json();
-        let definition = data[0].meanings[0].definitions[0].definition;
-        console.log(definition);
+        if (def.ok) {
+            let data = await def.json();
+            let definition = data[0].meanings[0].definitions[0].definition;
+            // console.log(definition);
+            // incase word is greater than 60
+            if (word.length > 60) {
+                word = word.slice(0, 220) + "...";
+            }
+            // incase definition is greater than 200
+            if (definition.length > 220) {
+                definition = definition.slice(0, 220) + "...";
+            }
 
-        tool.children[0].innerText = word;
-        tool.children[2].innerText = definition;
-        tool.children[3].onclick = () => {
-            window.open(`https://www.google.com/search?q=${word}+meaning`);
-        };
-    } else {
-        tool.children[0].innerText = word;
-        tool.children[2].innerText = "ERROR : nothing found !";
-        tool.children[3].onclick = () => {
-            window.open(`https://www.google.com/search?q=${word}+meaning`);
-        };
+
+            tool.children[0].innerText = word[0].toUpperCase() + word.slice(1);
+            tool.children[2].innerText = definition;
+            tool.children[3].onclick = () => {
+                window.open(`https://www.google.com/search?q=${word}+meaning`);
+            };
+        } else {
+            tool.children[0].innerText = word[0].toUpperCase() + word.slice(1);;
+            tool.children[2].innerText = "ERROR : nothing found !";
+            tool.children[3].onclick = () => {
+                window.open(`https://www.google.com/search?q=${word}+meaning`);
+            };
+        }
+        // console.log(definition);
+        place_tool(x, y, tool);
     }
-    // console.log(definition);
-    place_tool(x, y, tool);
 }
 
 // delete all the tabs
