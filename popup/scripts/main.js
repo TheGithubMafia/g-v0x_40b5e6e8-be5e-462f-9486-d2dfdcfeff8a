@@ -1,94 +1,52 @@
-let inp, submit;
-let word, title, desc, more;
+// entry point
 
-// getting definition
-const get_def = async () => {
-    // get dom
+window.onload = () => {
+    // event listener for search submit button
+    let search_submit_button = document.getElementById("submit");
+    search_submit_button.onclick = () => {
+        get_data_and_write();
+    };
+
+    // event listener for enter button
+    let search_field = document.getElementById("inp");
+    search_field.onkeydown = (e) => {
+        let key = e.keyCode;
+
+        // if enter is pressed
+        if (key == 13) {
+            get_data_and_write();
+        }
+    }
+
+    // when toggle is clicked
+    let toggle = document.getElementById("cb");
+    toggle.onclick = () => {
+        browser.storage.local.set({ is_search_allowed: toggle.checked });
+    }
+}
+
+// write definition from api call and write it to dom
+const get_data_and_write = async () => {
+
+    // get word from input
     inp = document.getElementById("inp");
     word = inp.value.trim();
-    // loading
-    title.innerText = "Loading...";
-    desc.innerText = "Loading...";
 
-    // get definition
-    let lang = "en";
+    // show loading
+    write_definition_to_dom(word, "loading...");
+
+    // get definition from api
+    let definition = await retrieve_definition_via_api(word);
+    // console.log(definition);
+
+    // if word is valid
     if (word.length > 0) {
-        let def = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/${lang}/${word}`);
-
-        if (def.ok) {
-            let data = await def.json();
-            let definition = data[0].meanings[0].definitions[0].definition;
-            // console.log(definition);
-            // incase word is greater than 60
-            if (word.length > 60) {
-                word = word.slice(0, 220) + "...";
-            }
-            // incase definition is greater than 200
-            if (definition.length > 220) {
-                definition = definition.slice(0, 220) + "...";
-            }
-
-            title.innerText = word[0].toUpperCase() + word.slice(1);
-            desc.innerText = definition;
-
-
-        } else {
-            title.innerText = word[0].toUpperCase() + word.slice(1);
-            desc.innerText = "ERROR : nothing found !";
-        }
-
-        // get more anyway
-        more.onclick = () => {
-            window.open(`https://www.google.com/search?q=${word}+meaning`);
-        };
+        // assign these elements now
+        write_definition_to_dom(word, definition);
+    } else {
+        // if not show error
+        write_definition_to_dom(word, "ERROR : Not found !");
     }
+
 }
 
-// it sends the checkbox data to the content script that is injected into tabs
-const send_info = (tabs) => {
-    // console.log(tabs[0]);
-    let cb = document.getElementById("cb");
-    browser.tabs.sendMessage(tabs[0].id, {
-        checkbox_value: cb.checked
-    });
-}
-
-// send error report to the content script
-const send_report = (err) => {
-
-    browser.tabs.sendMessage(tabs[0].id, {
-        ERROR: err
-    });
-}
-
-
-// get dom
-inp = document.getElementById("inp");
-word = inp.value.trim();
-
-// result
-title = document.getElementsByClassName("res-title")[0];
-desc = document.getElementsByClassName("res-desc")[0];
-more = document.getElementsByClassName("res-more")[0];
-submit = document.getElementById("submit");
-
-// event listener
-submit.onclick = () => { get_def() };
-inp.addEventListener("keydown", (e) => {
-    let key = e.keyCode;
-
-    // if enter is pressed
-    if (key == 13) {
-        get_def();
-    }
-});
-
-// send checkbox data
-document.addEventListener("click", (e) => {
-    // console.log(e.target.id);
-    if (e.target.id == "cb") {
-        browser.tabs.query({ active: true, currentWindow: true })
-            .then(send_info)
-            .catch(send_report);
-    }
-})
