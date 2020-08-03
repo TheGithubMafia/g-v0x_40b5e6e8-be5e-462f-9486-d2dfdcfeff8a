@@ -82,7 +82,12 @@ class Dictionary_tooltip {
         let more = this.main_dom_element.getElementsByClassName("dict-more")[0];
 
         title.innerText = capitalize(resize_string(word, 70));
-        desc.innerText = resize_string(definition, 220);
+        if (definition) {
+            desc.innerText = resize_string(definition, 220);
+        } else {
+            desc.innerText = "Sorry! nothing found :(";
+        }
+
         more.onclick = () => {
             window.open(`https://www.google.com/search?q=${word}+meaning`);
         };
