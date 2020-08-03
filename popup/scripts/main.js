@@ -18,7 +18,7 @@ window.onload = () => {
 
 const get_data_and_write_definition = async () => {
 
-    word = document.getElementById("inp").value.trim();
+    let word = document.getElementById("inp").value.trim();
     let definition = await retrieve_definition_via_api(word);
 
     let existing_dictionary_dom = document.getElementsByClassName("result")[0];

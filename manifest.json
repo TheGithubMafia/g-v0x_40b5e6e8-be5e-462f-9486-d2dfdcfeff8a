@@ -1,14 +1,13 @@
 {
     "manifest_version": 2,
     "name": "Web Dictionary",
-    "description": "Show definition of a when doubled clicked and selected hovered.",
+    "description": "Get definition of any word by double clicking on it.",
     "version": "1.4",
     "homepage_url": "https://github.com/jhamadhav/extension-web-dictionary",
     "permissions": [
         "activeTab",
         "<all_urls>",
-        "webRequest",
-        "storage"
+        "webRequest"
     ],
     "browser_action": {
         "default_icon": "icons/icon-48.svg",
