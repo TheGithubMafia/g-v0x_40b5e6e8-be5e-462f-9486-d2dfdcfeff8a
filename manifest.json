@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "Web Dictionary",
     "description": "Show definition of a when doubled clicked and selected hovered.",
-    "version": "1.2",
+    "version": "1.4",
     "homepage_url": "https://github.com/jhamadhav/extension-web-dictionary",
     "permissions": [
         "activeTab",
@@ -21,7 +21,7 @@
                 "<all_urls>"
             ],
             "css": [
-                "content-styles/main.min.css"
+                "content/content-styles/main.min.css"
             ],
             "js": [
                 "modules/api_call.js",
