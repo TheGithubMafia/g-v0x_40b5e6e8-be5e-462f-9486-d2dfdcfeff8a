@@ -4,9 +4,6 @@
     "description": "Show definition of a when doubled clicked and selected hovered.",
     "version": "1.2",
     "homepage_url": "https://github.com/jhamadhav/extension-web-dictionary",
-    "icons": {
-        "48": "icons/icon-48.svg"
-    },
     "permissions": [
         "activeTab",
         "<all_urls>",
@@ -27,9 +24,9 @@
                 "content-styles/main.min.css"
             ],
             "js": [
-                "popup/scripts/api_call.js",
-                "content-scripts/dictionary.js",
-                "content-scripts/content-script.js"
+                "modules/api_call.js",
+                "modules/dictionary.js",
+                "content/content-script.js"
             ]
         }
     ],
