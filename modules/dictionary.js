@@ -45,7 +45,6 @@ class Dictionary_tooltip {
 
         let tool_h = this.main_dom_element.getBoundingClientRect().height;
         let tool_w = this.main_dom_element.getBoundingClientRect().width;
-        // console.log(`h : ${tool_h} w : ${tool_w}`);
 
         let tool_final_x = 0, tool_final_y = 0;
 
@@ -60,18 +59,19 @@ class Dictionary_tooltip {
             }
         }
         // for Y co-ordinate
-        let yoff = 12; //so that there would be some space for the text 
+        let yoff = 12; //to create some space for text 
         if (window_H - mouseY - yoff >= tool_h) {
-            tool_final_y = mouseY + yoff;
+            tool_final_y = mouseY + yoff + window.scrollY;
         } else {
             if (mouseY >= tool_h + yoff) {
-                tool_final_y = mouseY - tool_h - yoff;
+                tool_final_y = mouseY - tool_h - yoff + window.scrollY;
             } else {
-                tool_final_y = 0;
+                tool_final_y = window.screenY + window_H - tool_h;
             }
         }
-        tool.style.left = `${tool_final_x}px`;
-        tool.style.top = `${tool_final_y}px`;
+
+        this.main_dom_element.style.left = `${tool_final_x}px`;
+        this.main_dom_element.style.top = `${tool_final_y}px`;
 
     }
 
@@ -80,7 +80,7 @@ class Dictionary_tooltip {
         let title = this.main_dom_element.getElementsByClassName("dict-title")[0];
         let desc = this.main_dom_element.getElementsByClassName("dict-desc")[0];
         let more = this.main_dom_element.getElementsByClassName("dict-more")[0];
-        console.log(title.innerText);
+
         title.innerText = capitalize(resize_string(word, 70));
         desc.innerText = resize_string(definition, 220);
         more.onclick = () => {

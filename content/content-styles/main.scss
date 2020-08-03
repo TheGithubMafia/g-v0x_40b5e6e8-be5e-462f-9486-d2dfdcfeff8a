@@ -6,7 +6,8 @@
 .dict {
     position: absolute;
     z-index: 999;
-    max-width: 300px;
+    width: 90%;
+    max-width: 260px;
     border-radius: 6px;
     background-color: white;
     color: black;
@@ -24,7 +25,7 @@
     }
 
     hr {
-        width: 80%;
+        width: 85%;
         margin: 4px;
     }
 
