@@ -7,7 +7,7 @@ const show_dictionary_tooltip = async (e) => {
 
     let tooltip = new Dictionary_tooltip();
     tooltip.create_tooltip();
-    tooltip.place_tooltip(mouseX, mouseY);
+    // tooltip.place_tooltip(mouseX, mouseY);
 
     let word = window.getSelection().toString().trim();
     if (word.length > 0) {
@@ -18,7 +18,7 @@ const show_dictionary_tooltip = async (e) => {
     }
 
     // to reposition after filling the data
-    tooltip.place_tooltip(mouseX, mouseY);
+    // tooltip.place_tooltip(mouseX, mouseY);
 }
 
 const delete_all_dictionary_tooltip = (e) => {

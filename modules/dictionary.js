@@ -11,7 +11,7 @@ class Dictionary_tooltip {
 
             let dictionary_title = document.createElement("div");
             dictionary_title.classList = "dict-title";
-            dictionary_title.innerText = "Loading...";
+            dictionary_title.innerText = "Word";
 
             let hr = document.createElement("hr");
             hr.classList = "dict-hr";
@@ -45,7 +45,7 @@ class Dictionary_tooltip {
 
         let tool_h = this.main_dom_element.getBoundingClientRect().height;
         let tool_w = this.main_dom_element.getBoundingClientRect().width;
-        console.log(`h : ${tool_h} w : ${tool_w}`);
+        // console.log(`h : ${tool_h} w : ${tool_w}`);
 
         let tool_final_x = 0, tool_final_y = 0;
 
@@ -80,7 +80,7 @@ class Dictionary_tooltip {
         let title = this.main_dom_element.getElementsByClassName("dict-title")[0];
         let desc = this.main_dom_element.getElementsByClassName("dict-desc")[0];
         let more = this.main_dom_element.getElementsByClassName("dict-more")[0];
-
+        console.log(title.innerText);
         title.innerText = capitalize(resize_string(word, 70));
         desc.innerText = resize_string(definition, 220);
         more.onclick = () => {
