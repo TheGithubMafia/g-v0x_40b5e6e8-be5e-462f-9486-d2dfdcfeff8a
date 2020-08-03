@@ -2,12 +2,12 @@ console.log("Web dictionary successfully added!");
 
 const show_dictionary_tooltip = async (e) => {
 
-    let mouseX = e.pageX;
-    let mouseY = e.pageY;
+    let mouseX = e.clientX;
+    let mouseY = e.clientY;
 
     let tooltip = new Dictionary_tooltip();
     tooltip.create_tooltip();
-    // tooltip.place_tooltip(mouseX, mouseY);
+    tooltip.place_tooltip(mouseX, mouseY);
 
     let word = window.getSelection().toString().trim();
     if (word.length > 0) {
@@ -18,7 +18,7 @@ const show_dictionary_tooltip = async (e) => {
     }
 
     // to reposition after filling the data
-    // tooltip.place_tooltip(mouseX, mouseY);
+    tooltip.place_tooltip(mouseX, mouseY);
 }
 
 const delete_all_dictionary_tooltip = (e) => {
@@ -33,9 +33,10 @@ const delete_all_dictionary_tooltip = (e) => {
 }
 
 document.ondblclick = (e) => {
+    e.preventDefault();
     show_dictionary_tooltip(e);
 };
 
 document.onclick = (e) => {
-    // delete_all_dictionary_tooltip(e);
+    delete_all_dictionary_tooltip(e);
 };
