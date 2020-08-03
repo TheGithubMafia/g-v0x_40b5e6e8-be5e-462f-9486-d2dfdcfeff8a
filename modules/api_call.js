@@ -6,7 +6,6 @@ const retrieve_definition_via_api = async (word) => {
     if (response.ok) {
         let data = await response.json();
         let definition = data[0].meanings[0].definitions[0].definition;
-        // console.log(definition);
         return definition;
     } else {
         return undefined;

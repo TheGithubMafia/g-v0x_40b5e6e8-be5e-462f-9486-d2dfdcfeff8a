@@ -23,11 +23,11 @@ const show_dictionary_tooltip = async (e) => {
 
 const delete_all_dictionary_tooltip = (e) => {
     let reg = new RegExp("dict");
-    let tar = e.target.classList.toString();
-    let arr = document.querySelectorAll('.dict');
-    if (!reg.test(tar)) {
-        for (let i of arr) {
-            i.remove();
+    let target_element = e.target.classList.toString();
+    let all_tooltip_elements = document.querySelectorAll('.dict');
+    if (!reg.test(target_element)) {
+        for (let elem of all_tooltip_elements) {
+            elem.remove();
         }
     }
 }
