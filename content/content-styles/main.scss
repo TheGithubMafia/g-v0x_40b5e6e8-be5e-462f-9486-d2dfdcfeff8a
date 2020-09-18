@@ -23,6 +23,7 @@ body {
     transition-duration: 100ms;
 
     .dict-header {
+        width: 100%;
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
@@ -30,6 +31,7 @@ body {
         margin-bottom: -4px;
 
         .dict-title {
+            max-width: 70%;
             font-size: x-large;
             margin: 4px;
             padding-left: 10px;
