@@ -18,10 +18,9 @@ class Dictionary_tooltip {
 
             let dictionary_audio = document.createElement("img");
             dictionary_audio.classList = "dict-audio";
-            dictionary_audio.title = "Listen";
-
-            dictionary_audio.src = "../icons/audio.svg";
-
+            dictionary_audio.title = "listen";
+            dictionary_audio.alt = "listen";
+            dictionary_audio.src = browser.extension.getURL("../icons/audio.svg");
 
             let hr = document.createElement("hr");
             hr.classList = "dict-hr";
