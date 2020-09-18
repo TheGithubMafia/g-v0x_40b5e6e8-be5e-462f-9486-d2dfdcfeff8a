@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "Web Dictionary",
     "description": "Get definition of any word by double clicking on it.",
-    "version": "1.4.2",
+    "version": "1.4.3",
     "homepage_url": "https://github.com/jhamadhav/extension-web-dictionary",
     "permissions": [
         "activeTab",
