@@ -9,9 +9,19 @@ class Dictionary_tooltip {
             let dictionary_wrapper = document.createElement("div");
             dictionary_wrapper.classList = "dict";
 
+            let dictionary_header = document.createElement("div");
+            dictionary_header.classList = "dict-header";
+
             let dictionary_title = document.createElement("div");
             dictionary_title.classList = "dict-title";
             dictionary_title.innerText = "Word";
+
+            let dictionary_audio = document.createElement("img");
+            dictionary_audio.classList = "dict-audio";
+            dictionary_audio.title = "Listen";
+
+            dictionary_audio.src = "../icons/audio.svg";
+
 
             let hr = document.createElement("hr");
             hr.classList = "dict-hr";
@@ -24,7 +34,10 @@ class Dictionary_tooltip {
             dictionary_more_btn.classList = "dict-more"
             dictionary_more_btn.innerText = "More";
 
-            dictionary_wrapper.appendChild(dictionary_title);
+            dictionary_header.appendChild(dictionary_title);
+            dictionary_header.appendChild(dictionary_audio);
+
+            dictionary_wrapper.appendChild(dictionary_header);
             dictionary_wrapper.appendChild(hr);
             dictionary_wrapper.appendChild(dictionary_desc);
             dictionary_wrapper.appendChild(dictionary_more_btn);
@@ -78,6 +91,7 @@ class Dictionary_tooltip {
     write_definition(word, definition) {
 
         let title = this.main_dom_element.getElementsByClassName("dict-title")[0];
+        let audio = this.main_dom_element.getElementsByClassName("dict-audio")[0];
         let desc = this.main_dom_element.getElementsByClassName("dict-desc")[0];
         let more = this.main_dom_element.getElementsByClassName("dict-more")[0];
 
@@ -91,6 +105,11 @@ class Dictionary_tooltip {
         more.onclick = () => {
             window.open(`https://www.google.com/search?q=${word}+meaning`);
         };
+        audio.onclick = () => {
+            let msg = new SpeechSynthesisUtterance(`${word}`);
+            window.speechSynthesis.speak(msg);
+
+        }
     }
 
     delete_tooltip() {
